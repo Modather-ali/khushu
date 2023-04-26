@@ -13,7 +13,8 @@ class MainScreen extends StatelessWidget {
       ),
       body: Stack(
         children: const [
-          AzkarScreen(),
+          // AzkarScreen(),
+          AzanTimesScreen(),
         ],
       ),
     );

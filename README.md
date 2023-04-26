@@ -1,7 +1,7 @@
 # khushu
 
 A new Flutter project.
-
+quran qibla
 ## Getting Started
 
 This project is a starting point for a Flutter application.

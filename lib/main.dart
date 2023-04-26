@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'خشوع',
-      locale: const Locale('ar'),
+      // locale: const Locale('ar'),
       theme: lightTheme,
       home: const MainScreen(),
     );
