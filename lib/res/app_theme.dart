@@ -1,4 +1,6 @@
-import '../package.dart';
+import 'package:flutter/material.dart';
+
+import 'constants.dart';
 
 ThemeData lightTheme = ThemeData(
   fontFamily: 'Tajawal',
