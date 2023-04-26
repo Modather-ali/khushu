@@ -12,9 +12,10 @@ class MainScreen extends StatelessWidget {
         title: const Text('خشوع'),
       ),
       body: Stack(
-        children: const [
+        children: [
           // AzkarScreen(),
-          AzanTimesScreen(),
+          // AzanTimesScreen(),
+          QiblaScreen(),
         ],
       ),
     );
