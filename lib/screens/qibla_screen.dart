@@ -1,6 +1,6 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_qiblah/flutter_qiblah.dart';
 
 import '../widgets/widgets.dart';
@@ -23,8 +23,9 @@ class QiblaScreen extends StatelessWidget {
           );
         }
 
-        if (snapshot.data!) {
-          return QiblahCompass();
+        if (snapshot.hasData) {
+          log(snapshot.data!.toString());
+          return const QiblaCompass();
         } else {
           return QiblahMaps();
         }

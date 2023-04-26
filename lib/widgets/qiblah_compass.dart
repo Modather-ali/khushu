@@ -8,12 +8,14 @@ import 'package:geolocator/geolocator.dart';
 
 import 'widgets.dart';
 
-class QiblahCompass extends StatefulWidget {
+class QiblaCompass extends StatefulWidget {
+  const QiblaCompass({super.key});
+
   @override
-  _QiblahCompassState createState() => _QiblahCompassState();
+  _QiblaCompassState createState() => _QiblaCompassState();
 }
 
-class _QiblahCompassState extends State<QiblahCompass> {
+class _QiblaCompassState extends State<QiblaCompass> {
   final _locationStreamController =
       StreamController<LocationStatus>.broadcast();
 
@@ -30,38 +32,17 @@ class _QiblahCompassState extends State<QiblahCompass> {
     return Container(
       alignment: Alignment.center,
       padding: const EdgeInsets.all(8.0),
-      child: StreamBuilder(
-        stream: stream,
+      child: FutureBuilder(
+        future: _checkLocationStatus(),
         builder: (context, AsyncSnapshot<LocationStatus> snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting)
-            return LoadingIndicator();
-          if (snapshot.data!.enabled == true) {
-            switch (snapshot.data!.status) {
-              case LocationPermission.always:
-              case LocationPermission.whileInUse:
-                return QiblahCompassWidget();
-
-              case LocationPermission.denied:
-                return LocationErrorWidget(
-                  error: "Location service permission denied",
-                  callback: _checkLocationStatus,
-                );
-              case LocationPermission.deniedForever:
-                return LocationErrorWidget(
-                  error: "Location service Denied Forever !",
-                  callback: _checkLocationStatus,
-                );
-              // case GeolocationStatus.unknown:
-              //   return LocationErrorWidget(
-              //     error: "Unknown Location service error",
-              //     callback: _checkLocationStatus,
-              //   );
-              default:
-                return const SizedBox();
-            }
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const LoadingIndicator();
+          }
+          if (snapshot.data!.enabled) {
+            return QiblahCompassWidget();
           } else {
             return LocationErrorWidget(
-              error: "Please enable Location service",
+              error: "فعل خدمة الموقع الجغرافي, جزاك الله خيراً",
               callback: _checkLocationStatus,
             );
           }
@@ -70,15 +51,19 @@ class _QiblahCompassState extends State<QiblahCompass> {
     );
   }
 
-  Future<void> _checkLocationStatus() async {
-    final locationStatus = await FlutterQiblah.checkLocationStatus();
+  Future<LocationStatus> _checkLocationStatus() async {
+    await FlutterQiblah.requestPermissions();
+    LocationStatus locationStatus = await FlutterQiblah.checkLocationStatus();
+    print(locationStatus.status);
     if (locationStatus.enabled &&
         locationStatus.status == LocationPermission.denied) {
       await FlutterQiblah.requestPermissions();
       final s = await FlutterQiblah.checkLocationStatus();
       _locationStreamController.sink.add(s);
-    } else
+    } else {
       _locationStreamController.sink.add(locationStatus);
+    }
+    return locationStatus;
   }
 
   @override
@@ -98,13 +83,16 @@ class QiblahCompassWidget extends StatelessWidget {
     alignment: Alignment.center,
   );
 
+  QiblahCompassWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
       stream: FlutterQiblah.qiblahStream,
       builder: (_, AsyncSnapshot<QiblahDirection> snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting)
-          return LoadingIndicator();
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const LoadingIndicator();
+        }
 
         final qiblahDirection = snapshot.data!;
 
