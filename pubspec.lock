@@ -86,6 +86,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.0"
+  flutter_islamic_icons:
+    dependency: "direct main"
+    description:
+      name: flutter_islamic_icons
+      sha256: e3013fc04cadd49bc9afba00fc51028e5e5daf4657f4988d678f64e62ce63a36
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.2"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -110,6 +118,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.0"
+  flutter_speed_dial:
+    dependency: "direct main"
+    description:
+      name: flutter_speed_dial
+      sha256: "41d7ad0bc224248637b3a5e0b9083e912a75445bdb450cf82b8ed06d7af7c61d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.2.0"
   flutter_svg:
     dependency: "direct main"
     description:

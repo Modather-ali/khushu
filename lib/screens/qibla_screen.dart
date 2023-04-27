@@ -11,25 +11,30 @@ class QiblaScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: _deviceSupport,
-      builder: (_, AsyncSnapshot<bool?> snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const CircularProgressIndicator();
-        }
-        if (snapshot.hasError) {
-          return Center(
-            child: Text("Error: ${snapshot.error.toString()}"),
-          );
-        }
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('إتجاه القبله'),
+      ),
+      body: FutureBuilder(
+        future: _deviceSupport,
+        builder: (_, AsyncSnapshot<bool?> snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const CircularProgressIndicator();
+          }
+          if (snapshot.hasError) {
+            return Center(
+              child: Text("Error: ${snapshot.error.toString()}"),
+            );
+          }
 
-        if (snapshot.hasData) {
-          log(snapshot.data!.toString());
-          return const QiblaCompass();
-        } else {
-          return const SizedBox();
-        }
-      },
+          if (snapshot.hasData) {
+            log(snapshot.data!.toString());
+            return const QiblaCompass();
+          } else {
+            return const SizedBox();
+          }
+        },
+      ),
     );
   }
 }

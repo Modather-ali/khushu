@@ -41,6 +41,8 @@ dependencies:
   vibration: ^1.7.6
   circular_menu: ^2.0.1
   odometer: ^3.0.0
+  flutter_islamic_icons: ^1.0.2
+  flutter_speed_dial: ^6.2.0
 
 dev_dependencies:
   flutter_test:

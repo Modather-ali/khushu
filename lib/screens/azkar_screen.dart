@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 import '../widgets/widgets.dart';
 
@@ -9,11 +7,16 @@ class AzkarScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      padding: const EdgeInsets.all(10),
-      children: const [
-        ZekerCard(),
-      ],
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('اذكار'),
+      ),
+      body: ListView(
+        padding: const EdgeInsets.all(10),
+        children: const [
+          ZekerCard(),
+        ],
+      ),
     );
   }
 }

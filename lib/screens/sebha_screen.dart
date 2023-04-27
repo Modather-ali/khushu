@@ -25,6 +25,10 @@ class _SebhaScreenState extends State<SebhaScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          backgroundColor: const Color(0xFFE7ECEF),
+          title: const Text('سبحة'),
+        ),
         backgroundColor: const Color(0xFFE7ECEF),
         body: Center(
           child: GestureDetector(

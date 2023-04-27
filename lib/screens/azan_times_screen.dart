@@ -5,24 +5,29 @@ class AzanTimesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        Directionality(
-          textDirection: TextDirection.rtl,
-          child: DataTable(
-            columns: const [
-              DataColumn(label: Text('الصلاة')),
-              DataColumn(label: Text('التوقيت')),
-            ],
-            rows: const [
-              DataRow(cells: [
-                DataCell(Text('الصبح')),
-                DataCell(Text('4:20')),
-              ]),
-            ],
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('مواعيد الإذان'),
+      ),
+      body: ListView(
+        children: [
+          Directionality(
+            textDirection: TextDirection.rtl,
+            child: DataTable(
+              columns: const [
+                DataColumn(label: Text('الصلاة')),
+                DataColumn(label: Text('التوقيت')),
+              ],
+              rows: const [
+                DataRow(cells: [
+                  DataCell(Text('الصبح')),
+                  DataCell(Text('4:20')),
+                ]),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
