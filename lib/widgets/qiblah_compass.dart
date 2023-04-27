@@ -52,10 +52,11 @@ class _QiblaCompassState extends State<QiblaCompass> {
   }
 
   Future<LocationStatus> _checkLocationStatus() async {
-    await FlutterQiblah.requestPermissions();
     LocationStatus locationStatus = await FlutterQiblah.checkLocationStatus();
     print(locationStatus.status);
-    if (locationStatus.enabled &&
+    if (!locationStatus.enabled) {
+      await FlutterQiblah.requestPermissions();
+    } else if (locationStatus.enabled &&
         locationStatus.status == LocationPermission.denied) {
       await FlutterQiblah.requestPermissions();
       final s = await FlutterQiblah.checkLocationStatus();

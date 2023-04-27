@@ -38,6 +38,9 @@ dependencies:
   flutter_qiblah: ^2.1.0
   flutter_svg: ^2.0.5
   google_maps_flutter: ^2.2.5
+  vibration: ^1.7.6
+  circular_menu: ^2.0.1
+  odometer: ^3.0.0
 
 dev_dependencies:
   flutter_test:

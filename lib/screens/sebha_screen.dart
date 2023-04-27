@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:odometer/odometer.dart';
+import 'package:vibration/vibration.dart';
 
 class SebhaScreen extends StatefulWidget {
   const SebhaScreen({super.key});
@@ -8,14 +10,28 @@ class SebhaScreen extends StatefulWidget {
 }
 
 class _SebhaScreenState extends State<SebhaScreen> {
-  int _counter = 100000999;
+  int _counter = 0;
+  bool _hasVibrator = false;
+  _init() async {
+    _hasVibrator = (await Vibration.hasVibrator())!;
+  }
+
+  @override
+  void initState() {
+    _init();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: const Color(0xFFE7ECEF),
         body: Center(
           child: GestureDetector(
-            onTap: () {
+            onTap: () async {
+              if (_hasVibrator) {
+                Vibration.vibrate(duration: 50);
+              }
               setState(() {
                 _counter++;
               });
@@ -40,10 +56,12 @@ class _SebhaScreenState extends State<SebhaScreen> {
                       color: Color(0xFFA7A9AF),
                     )
                   ]),
-              child: Text(
-                '$_counter',
-                style:
+              child: AnimatedSlideOdometerNumber(
+                numberTextStyle:
                     const TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
+                duration: const Duration(seconds: 1),
+                odometerNumber: OdometerNumber(_counter),
+                letterWidth: 13,
               ),
             ),
           ),
