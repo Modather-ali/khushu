@@ -27,7 +27,7 @@ class QiblaScreen extends StatelessWidget {
           log(snapshot.data!.toString());
           return const QiblaCompass();
         } else {
-          return QiblahMaps();
+          return const SizedBox();
         }
       },
     );
