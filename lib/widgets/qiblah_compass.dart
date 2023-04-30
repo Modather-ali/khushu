@@ -76,9 +76,9 @@ class _QiblaCompassState extends State<QiblaCompass> {
 }
 
 class QiblahCompassWidget extends StatelessWidget {
-  final _compassSvg = SvgPicture.asset('assets/compass.svg');
+  final _compassSvg = SvgPicture.asset('assets/images/compass.svg');
   final _needleSvg = SvgPicture.asset(
-    'assets/needle.svg',
+    'assets/images/needle.svg',
     fit: BoxFit.contain,
     height: 300,
     alignment: Alignment.center,
