@@ -11,15 +11,31 @@ class ZekerCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Container(
-        padding: const EdgeInsets.fromLTRB(20, 20, 20, 5),
+        padding: const EdgeInsets.fromLTRB(20, 10, 20, 5),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
+            Container(
+                padding: const EdgeInsets.all(3),
+                decoration: BoxDecoration(
+                    color: Colors.grey.shade200,
+                    borderRadius: BorderRadius.circular(15)),
+                child: Text(zekr.category)),
             Text(
               zekr.zekr,
               textAlign: TextAlign.center,
             ),
-            if (zekr.reference.isNotEmpty) Text('- ${zekr.reference}'),
+            if (zekr.reference.isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: Text(
+                  '${zekr.reference} -',
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 14,
+                  ),
+                ),
+              ),
             Divider(color: Colors.grey.shade400),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,

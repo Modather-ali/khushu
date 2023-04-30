@@ -37,25 +37,38 @@ class _AzkarScreenState extends State<AzkarScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        actions: [
-          MaterialButton(
-            onPressed: () {
-              _loadAzkar();
-            },
-          )
-        ],
-        title: const Text('اذكار'),
-      ),
-      body: ListView.builder(
-        itemCount: _azkar.length,
-        itemBuilder: (context, index) {
-          return ZekerCard(
-            zekr: _azkar[index],
-          );
-        },
-        padding: const EdgeInsets.all(10),
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          actions: [
+            MaterialButton(
+              onPressed: () {
+                _loadAzkar();
+              },
+            )
+          ],
+          title: const Text('اذكار'),
+          toolbarHeight: 0,
+          bottom: const TabBar(tabs: [
+            Tab(text: 'اذكار'),
+            Tab(text: 'المفضلة'),
+          ]),
+        ),
+        body: TabBarView(
+          children: [
+            ListView.builder(
+              itemCount: _azkar.length,
+              itemBuilder: (context, index) {
+                return ZekerCard(
+                  zekr: _azkar[index],
+                );
+              },
+              padding: const EdgeInsets.all(10),
+            ),
+            const SizedBox(),
+          ],
+        ),
       ),
     );
   }
