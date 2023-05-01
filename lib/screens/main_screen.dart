@@ -83,7 +83,7 @@ class _MainScreenState extends State<MainScreen> {
         index: _screenIndex,
         children: [
           const AzkarScreen(),
-          const AzanTimesScreen(),
+          AzanTimesScreen(),
           QiblaScreen(),
           const SebhaScreen(),
         ],
