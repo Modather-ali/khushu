@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 import 'res/res.dart';
 import 'screens/screens.dart';
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
       locale: const Locale('ar'),
       theme: lightTheme,
       home: const MainScreen(),
+      builder: EasyLoading.init(),
     );
   }
 }

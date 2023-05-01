@@ -18,15 +18,12 @@ class _MainScreenState extends State<MainScreen> {
 
   int _screenIndex = 0;
   _changeScreen(int index) {
-    // _circularMenuState.currentState!.reverseAnimation();
     setState(() => _screenIndex = index);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // floatingActionButtonLocation:
-      //     FloatingActionButtonLocation.miniCenterFloat,
       floatingActionButton: SpeedDial(
         icon: Icons.menu,
         activeIcon: Icons.close,
@@ -78,13 +75,13 @@ class _MainScreenState extends State<MainScreen> {
           ),
         ],
       ),
-
       body: IndexedStack(
         index: _screenIndex,
         children: [
           const AzkarScreen(),
-          AzanTimesScreen(),
-          QiblaScreen(),
+          const AzanTimesScreen(),
+          // QiblaScreen(),
+          Container(),
           const SebhaScreen(),
         ],
       ),

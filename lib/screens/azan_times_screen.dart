@@ -1,71 +1,106 @@
-import 'dart:developer';
-
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 import '../services/services.dart';
 
-import 'dart:convert';
-import 'package:http/http.dart' as http;
-import 'package:http/http.dart';
+import '../widgets/offline_screen.dart';
 
-class AzanTimesScreen extends StatelessWidget {
-  AzanTimesScreen({super.key});
+class AzanTimesScreen extends StatefulWidget {
+  const AzanTimesScreen({super.key});
+
+  @override
+  State<AzanTimesScreen> createState() => _AzanTimesScreenState();
+}
+
+class _AzanTimesScreenState extends State<AzanTimesScreen> {
   final Services _services = Services();
-  getPrayerTimes() async {
-    Uri uri = Uri.parse(
-        //'http://api.aladhan.com/v1/calendarByCity/2017/4?city=London&country=United Kingdom&method=2',
-        'http://api.aladhan.com/v1/calendar/2023/5?longitude=9.70421229999999&latitude=51.509648');
-    Response response = await http.get(
-      uri,
-      // headers: {
-      //   "longitude": "9.70421229999999",
-      //   "latitude": "51.509648",
+  List<Map<String, String>> _prayerTimes = [];
+  var _connectivityResult;
+  final Connectivity _connectivity = Connectivity();
+  final Map _prayers = {
+    'Fajr': 'الفجر',
+    'Sunrise': 'الشروق',
+    'Dhuhr': 'الظهر',
+    'Asr': 'العصر',
+    'Maghrib': 'المغرب',
+    'Isha': 'العشاء',
+  };
+  _checkConnectivity() async {
+    _connectivityResult = await _connectivity.checkConnectivity();
+    _connectivity.onConnectivityChanged.listen((event) {
+      if (event != ConnectivityResult.none) {
+        setState(() {
+          _connectivityResult = event;
+        });
+      }
+    });
+    setState(() {});
+  }
 
-      //   //"197.252.201.127",
-      // },
+  _getPrayerTimes() async {
+    await EasyLoading.show(
+      maskType: EasyLoadingMaskType.black,
     );
-    var data = json.decode(response.body);
-    log(data.toString());
-    log(response.statusCode.toString());
+
+    _prayerTimes = await _services.getPrayerTimes();
+
+    EasyLoading.dismiss();
+
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    _checkConnectivity();
+    if (_connectivityResult != ConnectivityResult.none) {
+      _getPrayerTimes();
+    }
+
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('مواعيد الإذان'),
+        title: const Text('مواعيد الصلاة'),
         leading: MaterialButton(
           onPressed: () {
             // _services.getPrayerTimes();
             print('My Prayer Times');
-            getPrayerTimes();
+            _getPrayerTimes();
           },
           color: Colors.blue,
         ),
       ),
-      body: FutureBuilder(
-          future: _services.getPrayerTimes(),
-          builder: (context, AsyncSnapshot snapshot) {
-            return ListView(
-              children: [
-                Directionality(
-                  textDirection: TextDirection.rtl,
-                  child: DataTable(
-                    columns: const [
-                      DataColumn(label: Text('الصلاة')),
-                      DataColumn(label: Text('التوقيت')),
-                    ],
-                    rows: const [
-                      DataRow(cells: [
-                        DataCell(Text('الصبح')),
-                        DataCell(Text('4:20')),
-                      ]),
-                    ],
+      body: Visibility(
+        visible: _connectivityResult != ConnectivityResult.none,
+        replacement: const OfflineScreen(),
+        child: FutureBuilder(
+            future: _services.getPrayerTimes(),
+            builder: (context, AsyncSnapshot snapshot) {
+              return ListView(
+                children: [
+                  Directionality(
+                    textDirection: TextDirection.rtl,
+                    child: DataTable(
+                      columns: const [
+                        DataColumn(label: Text('الصلاة')),
+                        DataColumn(label: Text('التوقيت')),
+                      ],
+                      rows: List.generate(_prayerTimes.length, (index) {
+                        return DataRow(cells: [
+                          DataCell(Text(_prayerTimes[index]['pray']!)),
+                          DataCell(Text(_prayerTimes[index]['time']!)),
+                        ]);
+                      }),
+                    ),
                   ),
-                ),
-              ],
-            );
-          }),
+                ],
+              );
+            }),
+      ),
     );
   }
 }
