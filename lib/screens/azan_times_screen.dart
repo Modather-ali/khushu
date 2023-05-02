@@ -20,7 +20,7 @@ class _AzanTimesScreenState extends State<AzanTimesScreen> {
   final Connectivity _connectivity = Connectivity();
   final Map _prayers = {
     'Fajr': 'الفجر',
-    'Sunrise': 'الشروق',
+    // 'Sunrise': 'الشروق',
     'Dhuhr': 'الظهر',
     'Asr': 'العصر',
     'Maghrib': 'المغرب',
@@ -65,12 +65,6 @@ class _AzanTimesScreenState extends State<AzanTimesScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('مواعيد الصلاة'),
-        leading: MaterialButton(
-          onPressed: () {
-            _getPrayerTimes();
-          },
-          color: Colors.blue,
-        ),
       ),
       body: Visibility(
         visible: _connectivityResult != ConnectivityResult.none,

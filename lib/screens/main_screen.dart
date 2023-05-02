@@ -15,7 +15,13 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   final GlobalKey<CircularMenuState> _circularMenuState =
       GlobalKey<CircularMenuState>();
-
+  final List<Widget> _screens = [
+    const AzkarScreen(),
+    const AzanTimesScreen(),
+    QiblaScreen(),
+    const SebhaScreen(),
+    const QuranScreen(),
+  ];
   int _screenIndex = 0;
   _changeScreen(int index) {
     setState(() => _screenIndex = index);
@@ -75,17 +81,7 @@ class _MainScreenState extends State<MainScreen> {
           ),
         ],
       ),
-      body: IndexedStack(
-        index: _screenIndex,
-        children: const [
-          // const AzkarScreen(),
-          // const AzanTimesScreen(),
-          // // QiblaScreen(),
-          // Container(),
-          // const SebhaScreen(),
-          QuranScreen(),
-        ],
-      ),
+      body: _screens[_screenIndex],
     );
   }
 }

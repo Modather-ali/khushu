@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:share_plus/share_plus.dart';
 
 import '../modules/zekr.dart';
 import '../res/res.dart';
@@ -41,7 +43,9 @@ class ZekerCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Clipboard.setData(ClipboardData(text: zekr.zekr));
+                  },
                   color: Constants.primaryColor,
                   icon: const Icon(Icons.copy),
                 ),
@@ -51,7 +55,9 @@ class ZekerCard extends StatelessWidget {
                   icon: const Icon(Icons.bookmark_outline),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Share.share(zekr.zekr);
+                  },
                   color: Constants.primaryColor,
                   icon: const Icon(Icons.share_outlined),
                 ),

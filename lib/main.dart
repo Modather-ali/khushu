@@ -3,8 +3,11 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 import 'res/res.dart';
 import 'screens/screens.dart';
+import 'services/shared_preferences_data.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SharedPreferencesData().init();
   runApp(const MyApp());
 }
 

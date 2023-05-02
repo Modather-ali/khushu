@@ -10,22 +10,27 @@ class QuranScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: 114,
-      itemBuilder: (context, index) {
-        return ListTile(
-          onTap: () {
-            Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => SurahView(surahNumber: index + 1),
-            ));
-          },
-          leading: const Icon(FlutterIslamicIcons.solidQuran2),
-          title: Text(
-            quran.getSurahNameArabic(index + 1),
-          ),
-          trailing: Text('${index + 1}'),
-        );
-      },
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('القرءان الكريم'),
+      ),
+      body: ListView.builder(
+        itemCount: 114,
+        itemBuilder: (context, index) {
+          return ListTile(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => SurahView(surahNumber: index + 1),
+              ));
+            },
+            leading: const Icon(FlutterIslamicIcons.solidQuran2),
+            title: Text(
+              quran.getSurahNameArabic(index + 1),
+            ),
+            trailing: Text('${index + 1}'),
+          );
+        },
+      ),
     );
   }
 }

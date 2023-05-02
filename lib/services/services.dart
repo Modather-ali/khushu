@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-import 'package:flutter/services.dart' show rootBundle;
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
@@ -10,19 +9,11 @@ import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 
 class Services {
-  Future<List> loadAzkarData() async {
-    String data = await rootBundle.loadString('assets/json/azkar.json');
-    final jsonResult = json.decode(data);
-    // print(jsonResult);
-    return jsonResult["rows"];
-  }
-
   Future<List<Map<String, String>>> getPrayerTimes() async {
     List<Map<String, String>> prayerTimes = [];
-    List<Map<String, String>> allTimes = [];
     final Map prayers = {
       'Fajr': 'الفجر',
-      'Sunrise': 'الشروق',
+      // 'Sunrise': 'الشروق',
       'Dhuhr': 'الظهر',
       'Asr': 'العصر',
       'Maghrib': 'المغرب',
