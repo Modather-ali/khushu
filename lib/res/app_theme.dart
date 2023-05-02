@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'constants.dart';
 
 ThemeData lightTheme = ThemeData(
-  fontFamily: 'Tajawal',
+  fontFamily: 'Amiri',
   appBarTheme: const AppBarTheme(
     backgroundColor: Color(0xFFF9F9F9),
     iconTheme: IconThemeData(color: Colors.black),
@@ -22,7 +22,7 @@ ThemeData lightTheme = ThemeData(
 );
 
 ThemeData darkTheme = ThemeData(
-  fontFamily: 'Tajawal',
+  fontFamily: 'Amiri',
   appBarTheme: const AppBarTheme(
     backgroundColor: Constants.primaryColor,
   ),

@@ -67,8 +67,6 @@ class _AzanTimesScreenState extends State<AzanTimesScreen> {
         title: const Text('مواعيد الصلاة'),
         leading: MaterialButton(
           onPressed: () {
-            // _services.getPrayerTimes();
-            print('My Prayer Times');
             _getPrayerTimes();
           },
           color: Colors.blue,
