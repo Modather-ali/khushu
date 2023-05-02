@@ -77,12 +77,13 @@ class _MainScreenState extends State<MainScreen> {
       ),
       body: IndexedStack(
         index: _screenIndex,
-        children: [
-          const AzkarScreen(),
-          const AzanTimesScreen(),
-          // QiblaScreen(),
-          Container(),
-          const SebhaScreen(),
+        children: const [
+          // const AzkarScreen(),
+          // const AzanTimesScreen(),
+          // // QiblaScreen(),
+          // Container(),
+          // const SebhaScreen(),
+          QuranScreen(),
         ],
       ),
     );
