@@ -9,6 +9,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 
 class Services {
+  bool isPrayerTimerLoaded = false;
   Future<List<Map<String, String>>> getPrayerTimes() async {
     List<Map<String, String>> prayerTimes = [];
     final Map prayers = {
@@ -20,26 +21,29 @@ class Services {
       'Isha': 'العشاء',
     };
     try {
-      Map timings = {};
-      Position position = await _determinePosition();
+      if (!isPrayerTimerLoaded) {
+        Map timings = {};
+        Position position = await _determinePosition();
 
-      Uri uri = Uri.parse(
-          'http://api.aladhan.com/v1/calendar/2023/5?longitude=${position.longitude}&latitude=${position.latitude}');
-      Response response = await http.get(uri);
-      log(response.statusCode.toString());
-      if (response.statusCode == 200) {
-        prayerTimes.clear();
-        var data = json.decode(response.body);
-        timings = data['data'][0]['timings'];
-        timings.forEach((key, value) {
-          log(key + '-' + value.toString().split('(')[0]);
-          if (prayers.containsKey(key)) {
-            prayerTimes.add({
-              'pray': prayers[key],
-              'time': value.toString().split('(')[0],
-            });
-          }
-        });
+        Uri uri = Uri.parse(
+            'http://api.aladhan.com/v1/calendar/2023/5?longitude=${position.longitude}&latitude=${position.latitude}');
+        Response response = await http.get(uri);
+        log(response.statusCode.toString());
+        if (response.statusCode == 200) {
+          prayerTimes.clear();
+          var data = json.decode(response.body);
+          timings = data['data'][0]['timings'];
+          timings.forEach((key, value) {
+            log(key + '-' + value.toString().split('(')[0]);
+            if (prayers.containsKey(key)) {
+              prayerTimes.add({
+                'pray': prayers[key],
+                'time': value.toString().split('(')[0],
+              });
+            }
+          });
+        }
+        isPrayerTimerLoaded = true;
       }
     } catch (e) {
       log('Error in getPrayerTimes : $e');

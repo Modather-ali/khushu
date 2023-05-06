@@ -4,11 +4,12 @@ import 'package:share_plus/share_plus.dart';
 
 import '../modules/zekr.dart';
 import '../res/res.dart';
+import '../services/shared_preferences_data.dart';
 
 class ZekerCard extends StatelessWidget {
   final Zekr zekr;
-  const ZekerCard({super.key, required this.zekr});
-
+  ZekerCard({super.key, required this.zekr});
+  final SharedPreferencesData _sharedPreferencesData = SharedPreferencesData();
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -49,11 +50,13 @@ class ZekerCard extends StatelessWidget {
                   color: Constants.primaryColor,
                   icon: const Icon(Icons.copy),
                 ),
-                IconButton(
-                  onPressed: () {},
-                  color: Constants.primaryColor,
-                  icon: const Icon(Icons.bookmark_outline),
-                ),
+                // IconButton(
+                //   onPressed: () {
+                //     _sharedPreferencesData.saveZekr(zekr);
+                //   },
+                //   color: Constants.primaryColor,
+                //   icon: const Icon(Icons.bookmark_outline),
+                // ),
                 IconButton(
                   onPressed: () {
                     Share.share(zekr.zekr);
