@@ -33,6 +33,8 @@ class _MainScreenState extends State<MainScreen> {
       floatingActionButton: SpeedDial(
         icon: Icons.menu,
         activeIcon: Icons.close,
+        foregroundColor: Colors.white,
+        activeForegroundColor: Colors.white,
         children: [
           SpeedDialChild(
             child: const Icon(FlutterIslamicIcons.solidPrayer),
@@ -82,6 +84,23 @@ class _MainScreenState extends State<MainScreen> {
         ],
       ),
       body: _screens[_screenIndex],
+    );
+  }
+
+  SpeedDialChild _speedDialChild({
+    required IconData? icon,
+    required Color? backgroundColor,
+    required String? label,
+    required int index,
+  }) {
+    return SpeedDialChild(
+      child: Icon(icon),
+      backgroundColor: backgroundColor,
+      foregroundColor: Colors.white,
+      label: label,
+      onTap: () {
+        _changeScreen(index);
+      },
     );
   }
 }

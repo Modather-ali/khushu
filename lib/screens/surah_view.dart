@@ -12,7 +12,7 @@ class SurahView extends StatelessWidget {
       appBar: AppBar(
         title: Text(quran.getSurahNameArabic(surahNumber)),
       ),
-      body: ListView(children: [
+      body: ListView(padding: const EdgeInsets.all(10), children: [
         RichText(
           textAlign: TextAlign.center,
           text: TextSpan(
