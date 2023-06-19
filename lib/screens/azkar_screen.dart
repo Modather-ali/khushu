@@ -20,11 +20,14 @@ class _AzkarScreenState extends State<AzkarScreen> {
   _loadAzkar() async {
     Zekr newZekr;
     AZKAR.shuffle();
-    for (var zekr in AZKAR) {
-      newZekr = Zekr(zekr: zekr[1], category: zekr[0], reference: zekr[4]);
+    for (List zekrData in AZKAR) {
+      newZekr = Zekr(
+        zekr: zekrData[1],
+        category: zekrData[0],
+        reference: zekrData[4],
+      );
       _azkar.add(newZekr);
     }
-    // await _services.loadAzkarData();
     log(_azkar.length.toString());
     setState(() {});
   }
@@ -37,33 +40,18 @@ class _AzkarScreenState extends State<AzkarScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
-      child: Scaffold(
-        appBar: AppBar(
-          actions: [
-            MaterialButton(
-              onPressed: () {
-                _loadAzkar();
-              },
-            )
-          ],
-          title: const Text('اذكار'),
-          // toolbarHeight: 0,
-          // bottom: const TabBar(tabs: [
-          //   Tab(text: 'اذكار'),
-          //   Tab(text: 'المفضلة'),
-          // ]),
-        ),
-        body: ListView.builder(
-          itemCount: _azkar.length,
-          itemBuilder: (context, index) {
-            return ZekerCard(
-              zekr: _azkar[index],
-            );
-          },
-          padding: const EdgeInsets.all(10),
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('اذكار'),
+      ),
+      body: ListView.builder(
+        itemCount: _azkar.length,
+        itemBuilder: (context, index) {
+          return ZekerCard(
+            zekr: _azkar[index],
+          );
+        },
+        padding: const EdgeInsets.all(10),
       ),
     );
   }

@@ -24,7 +24,7 @@
 </queries>
 
    <application
-        android:label="khushu"
+        android:label="خشوع"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

@@ -4,12 +4,11 @@ import 'package:share_plus/share_plus.dart';
 
 import '../modules/zekr.dart';
 import '../res/res.dart';
-import '../services/shared_preferences_data.dart';
 
 class ZekerCard extends StatelessWidget {
   final Zekr zekr;
-  ZekerCard({super.key, required this.zekr});
-  final SharedPreferencesData _sharedPreferencesData = SharedPreferencesData();
+  const ZekerCard({super.key, required this.zekr});
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -45,18 +44,18 @@ class ZekerCard extends StatelessWidget {
               children: [
                 IconButton(
                   onPressed: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                          content: Text(
+                        'تم النسخ',
+                        textDirection: TextDirection.rtl,
+                      )),
+                    );
                     Clipboard.setData(ClipboardData(text: zekr.zekr));
                   },
                   color: Constants.primaryColor,
                   icon: const Icon(Icons.copy),
                 ),
-                // IconButton(
-                //   onPressed: () {
-                //     _sharedPreferencesData.saveZekr(zekr);
-                //   },
-                //   color: Constants.primaryColor,
-                //   icon: const Icon(Icons.bookmark_outline),
-                // ),
                 IconButton(
                   onPressed: () {
                     Share.share(zekr.zekr);

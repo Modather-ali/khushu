@@ -17,6 +17,7 @@ class _SebhaScreenState extends State<SebhaScreen> {
   bool _editCounter = false;
   final TextEditingController _textEditingController = TextEditingController();
   final SharedPreferencesData _sharedPreferencesData = SharedPreferencesData();
+
   _init() async {
     _hasVibrator = (await Vibration.hasVibrator())!;
     await _sharedPreferencesData.init();
@@ -45,7 +46,7 @@ class _SebhaScreenState extends State<SebhaScreen> {
               TextButton(
                 onPressed: () {
                   if (_editCounter) {
-                    _counter = int.parse(_textEditingController.text);
+                    _counter += int.parse(_textEditingController.text);
                     _sharedPreferencesData.increaseSebhaCounter(_counter);
                     _textEditingController.clear();
                   }
@@ -65,6 +66,9 @@ class _SebhaScreenState extends State<SebhaScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 50),
                   child: TextField(
                     controller: _textEditingController,
+                    decoration: const InputDecoration(
+                      prefixIcon: Icon(Icons.add),
+                    ),
                   ),
                 ),
               ),
