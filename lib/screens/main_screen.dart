@@ -30,11 +30,14 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: SpeedDial(
+        switchLabelPosition: true,
         icon: Icons.menu,
         activeIcon: Icons.close,
         foregroundColor: Colors.white,
         activeForegroundColor: Colors.white,
+        overlayColor: Colors.black.withOpacity(0.3),
         children: [
           SpeedDialChild(
             child: const Icon(FlutterIslamicIcons.solidPrayer),

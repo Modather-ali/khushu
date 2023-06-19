@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 import 'res/res.dart';
 import 'screens/screens.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'خشوع',
       locale: const Locale('ar'),

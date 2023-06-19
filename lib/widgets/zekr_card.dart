@@ -45,11 +45,7 @@ class ZekerCard extends StatelessWidget {
                 IconButton(
                   onPressed: () {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                          content: Text(
-                        'تم النسخ',
-                        textDirection: TextDirection.rtl,
-                      )),
+                      const SnackBar(content: Text('تم النسخ')),
                     );
                     Clipboard.setData(ClipboardData(text: zekr.zekr));
                   },

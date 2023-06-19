@@ -20,7 +20,7 @@ class _AzanTimesScreenState extends State<AzanTimesScreen> {
   final Connectivity _connectivity = Connectivity();
   final Map _prayers = {
     'Fajr': 'الفجر',
-    // 'Sunrise': 'الشروق',
+    'Sunrise': 'الشروق',
     'Dhuhr': 'الظهر',
     'Asr': 'العصر',
     'Maghrib': 'المغرب',
