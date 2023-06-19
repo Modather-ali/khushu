@@ -14,6 +14,8 @@ class SebhaScreen extends StatefulWidget {
 class _SebhaScreenState extends State<SebhaScreen> {
   int _counter = 0;
   bool _hasVibrator = false;
+  bool _editCounter = false;
+  final TextEditingController _textEditingController = TextEditingController();
   final SharedPreferencesData _sharedPreferencesData = SharedPreferencesData();
   _init() async {
     _hasVibrator = (await Vibration.hasVibrator())!;
@@ -40,11 +42,30 @@ class _SebhaScreenState extends State<SebhaScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
-                'سبحان الله',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w700,
+              TextButton(
+                onPressed: () {
+                  if (_editCounter) {
+                    _counter = int.parse(_textEditingController.text);
+                    _sharedPreferencesData.increaseSebhaCounter(_counter);
+                    _textEditingController.clear();
+                  }
+                  setState(() => _editCounter = !_editCounter);
+                },
+                child: const Text(
+                  'إستغفر الله',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+              Visibility(
+                visible: _editCounter,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 50),
+                  child: TextField(
+                    controller: _textEditingController,
+                  ),
                 ),
               ),
               const SizedBox(height: 50),

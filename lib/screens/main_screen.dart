@@ -22,7 +22,7 @@ class _MainScreenState extends State<MainScreen> {
     const SebhaScreen(),
     const QuranScreen(),
   ];
-  int _screenIndex = 0;
+  int _screenIndex = 3;
   _changeScreen(int index) {
     setState(() => _screenIndex = index);
   }
