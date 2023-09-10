@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 import '../services/services.dart';
-
 import '../widgets/offline_screen.dart';
 
 class AzanTimesScreen extends StatefulWidget {
@@ -16,16 +15,16 @@ class AzanTimesScreen extends StatefulWidget {
 class _AzanTimesScreenState extends State<AzanTimesScreen> {
   final Services _services = Services();
   List<Map<String, String>> _prayerTimes = [];
-  var _connectivityResult;
+  var _connectivityResult = ConnectivityResult.none;
   final Connectivity _connectivity = Connectivity();
-  final Map _prayers = {
-    'Fajr': 'الفجر',
-    'Sunrise': 'الشروق',
-    'Dhuhr': 'الظهر',
-    'Asr': 'العصر',
-    'Maghrib': 'المغرب',
-    'Isha': 'العشاء',
-  };
+  // final Map _prayers = {
+  //   'Fajr': 'الفجر',
+  //   'Sunrise': 'الشروق',
+  //   'Dhuhr': 'الظهر',
+  //   'Asr': 'العصر',
+  //   'Maghrib': 'المغرب',
+  //   'Isha': 'العشاء',
+  // };
   _checkConnectivity() async {
     _connectivityResult = await _connectivity.checkConnectivity();
     _connectivity.onConnectivityChanged.listen((event) {

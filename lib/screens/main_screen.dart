@@ -1,4 +1,3 @@
-import 'package:circular_menu/circular_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_islamic_icons/flutter_islamic_icons.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
@@ -13,8 +12,6 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  final GlobalKey<CircularMenuState> _circularMenuState =
-      GlobalKey<CircularMenuState>();
   final List<Widget> _screens = [
     const AzkarScreen(),
     const AzanTimesScreen(),
@@ -22,7 +19,7 @@ class _MainScreenState extends State<MainScreen> {
     const SebhaScreen(),
     const QuranScreen(),
   ];
-  int _screenIndex = 3;
+  int _screenIndex = 0;
   _changeScreen(int index) {
     setState(() => _screenIndex = index);
   }

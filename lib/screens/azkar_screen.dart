@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 import '../modules/zekr.dart';
 import '../services/data.dart';
-import '../services/services.dart';
 import '../widgets/widgets.dart';
 
 class AzkarScreen extends StatefulWidget {
@@ -15,7 +14,7 @@ class AzkarScreen extends StatefulWidget {
 }
 
 class _AzkarScreenState extends State<AzkarScreen> {
-  final Services _services = Services();
+  // final Services _services = Services();
   final List<Zekr> _azkar = [];
   _loadAzkar() async {
     Zekr newZekr;
