@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_islamic_icons/flutter_islamic_icons.dart';
 
+import 'azkar_screen.dart';
+
 class BottomNavigation extends StatefulWidget {
   const BottomNavigation({super.key});
 
@@ -10,9 +12,17 @@ class BottomNavigation extends StatefulWidget {
 
 class _BottomNavigationState extends State<BottomNavigation> {
   int _screenIndex = 0;
+  final List<Widget> _screens = [
+    const AzkarScreen(),
+    Container(color: Colors.red),
+    Container(color: Colors.green),
+    Container(color: Colors.deepOrange),
+    Container(color: Colors.pink),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: _screens[_screenIndex],
       appBar: AppBar(
         title: const Text('خشوع'),
         leading: IconButton(

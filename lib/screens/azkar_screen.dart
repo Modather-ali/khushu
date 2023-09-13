@@ -3,8 +3,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 
 import '../../modules/zekr.dart';
-import '../../services/data.dart';
-import '../../widgets/widgets.dart';
+import '../../res/data.dart';
+import 'widgets/zekr_card.dart';
 
 class AzkarScreen extends StatefulWidget {
   const AzkarScreen({super.key});
@@ -14,7 +14,6 @@ class AzkarScreen extends StatefulWidget {
 }
 
 class _AzkarScreenState extends State<AzkarScreen> {
-  // final Services _services = Services();
   final List<Zekr> _azkar = [];
   _loadAzkar() async {
     Zekr newZekr;
@@ -40,17 +39,14 @@ class _AzkarScreenState extends State<AzkarScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('اذكار'),
-      ),
       body: ListView.builder(
         itemCount: _azkar.length,
         itemBuilder: (context, index) {
-          return ZekerCard(
+          return ZekrCard(
             zekr: _azkar[index],
           );
         },
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(15),
       ),
     );
   }
