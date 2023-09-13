@@ -1,0 +1,59 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_islamic_icons/flutter_islamic_icons.dart';
+
+class BottomNavigation extends StatefulWidget {
+  const BottomNavigation({super.key});
+
+  @override
+  State<BottomNavigation> createState() => _BottomNavigationState();
+}
+
+class _BottomNavigationState extends State<BottomNavigation> {
+  int _screenIndex = 0;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('خشوع'),
+        leading: IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.settings),
+        ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Colors.black,
+        unselectedItemColor: Colors.grey,
+        currentIndex: _screenIndex,
+        onTap: (value) {
+          setState(() {
+            _screenIndex = value;
+          });
+        },
+        items: [
+          _bnbItem(
+            label: 'اذكار',
+            icon: FlutterIslamicIcons.solidPrayer,
+          ),
+          _bnbItem(
+            label: 'مواعيد الإذان',
+            icon: Icons.access_alarm,
+          ),
+          _bnbItem(icon: FlutterIslamicIcons.solidQibla, label: 'القبله'),
+          _bnbItem(icon: FlutterIslamicIcons.solidTasbih2, label: 'سبحة'),
+          _bnbItem(
+              icon: FlutterIslamicIcons.solidQuran, label: 'القرءان الكريم'),
+        ],
+      ),
+    );
+  }
+
+  BottomNavigationBarItem _bnbItem({
+    required IconData icon,
+    required String label,
+  }) {
+    return BottomNavigationBarItem(
+      icon: Icon(icon),
+      label: label,
+    );
+  }
+}
