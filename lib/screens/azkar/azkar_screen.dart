@@ -2,8 +2,8 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 
-import '../../modules/zekr.dart';
-import '../../res/data.dart';
+import '../../../modules/zekr.dart';
+import '../../../res/data.dart';
 import 'widgets/zekr_card.dart';
 
 class AzkarScreen extends StatefulWidget {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:odometer/odometer.dart';
 import 'package:vibration/vibration.dart';
 
-import '../../services/shared_preferences_data.dart';
+// import '../../services/shared_preferences_data.dart';
 
 class SebhaScreen extends StatefulWidget {
   const SebhaScreen({super.key});
@@ -16,12 +16,12 @@ class _SebhaScreenState extends State<SebhaScreen> {
   bool _hasVibrator = false;
   bool _editCounter = false;
   final TextEditingController _textEditingController = TextEditingController();
-  final SharedPreferencesData _sharedPreferencesData = SharedPreferencesData();
+  // final SharedPreferencesData _sharedPreferencesData = SharedPreferencesData();
 
   _init() async {
     _hasVibrator = (await Vibration.hasVibrator())!;
-    await _sharedPreferencesData.init();
-    _counter = _sharedPreferencesData.sebhaCounter;
+    // await _sharedPreferencesData.init();
+    // _counter = _sharedPreferencesData.sebhaCounter;
     setState(() {});
   }
 
@@ -47,7 +47,7 @@ class _SebhaScreenState extends State<SebhaScreen> {
                 onPressed: () {
                   if (_editCounter) {
                     _counter += int.parse(_textEditingController.text);
-                    _sharedPreferencesData.increaseSebhaCounter(_counter);
+                    // _sharedPreferencesData.increaseSebhaCounter(_counter);
                     _textEditingController.clear();
                   }
                   setState(() => _editCounter = !_editCounter);
@@ -81,7 +81,7 @@ class _SebhaScreenState extends State<SebhaScreen> {
                   setState(() {
                     _counter++;
                   });
-                  _sharedPreferencesData.increaseSebhaCounter(_counter);
+                  // _sharedPreferencesData.increaseSebhaCounter(_counter);
                 },
                 child: Container(
                   height: 150,

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_islamic_icons/flutter_islamic_icons.dart';
 
-import 'azkar_screen.dart';
+import 'azkar/azkar_screen.dart';
+import 'sebha_screen.dart';
 
 class BottomNavigation extends StatefulWidget {
   const BottomNavigation({super.key});
@@ -11,12 +12,12 @@ class BottomNavigation extends StatefulWidget {
 }
 
 class _BottomNavigationState extends State<BottomNavigation> {
-  int _screenIndex = 0;
+  int _screenIndex = 3;
   final List<Widget> _screens = [
     const AzkarScreen(),
     Container(color: Colors.red),
     Container(color: Colors.green),
-    Container(color: Colors.deepOrange),
+    const SebhaScreen(),
     Container(color: Colors.pink),
   ];
   @override
