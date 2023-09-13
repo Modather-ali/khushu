@@ -7,6 +7,6 @@ class Constants {
 
   static const Color primaryColor = Color(0xFF29bf12);
   static const String appIcon = 'assets/images/app_icon.png';
-  static const String appName = '';
-  static const String appID = '';
+  static const String appName = 'خشوع';
+  static const String appID = 'app.khushu';
 }

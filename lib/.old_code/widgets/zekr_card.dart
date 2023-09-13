@@ -15,7 +15,6 @@ class ZekerCard extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.fromLTRB(20, 10, 20, 5),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Container(
                 padding: const EdgeInsets.all(3),
@@ -23,9 +22,12 @@ class ZekerCard extends StatelessWidget {
                     color: Colors.grey.shade200,
                     borderRadius: BorderRadius.circular(15)),
                 child: Text(zekr.category)),
-            Text(
-              zekr.zekr,
-              textAlign: TextAlign.center,
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 15),
+              child: SelectableText(
+                zekr.zekr,
+                textAlign: TextAlign.center,
+              ),
             ),
             if (zekr.reference.isNotEmpty)
               Padding(

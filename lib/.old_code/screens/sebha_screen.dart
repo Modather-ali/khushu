@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:odometer/odometer.dart';
 import 'package:vibration/vibration.dart';
 
-import '../services/shared_preferences_data.dart';
+import '../../services/shared_preferences_data.dart';
 
 class SebhaScreen extends StatefulWidget {
   const SebhaScreen({super.key});

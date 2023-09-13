@@ -2,9 +2,9 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 
-import '../modules/zekr.dart';
-import '../services/data.dart';
-import '../widgets/widgets.dart';
+import '../../modules/zekr.dart';
+import '../../services/data.dart';
+import '../../widgets/widgets.dart';
 
 class AzkarScreen extends StatefulWidget {
   const AzkarScreen({super.key});
