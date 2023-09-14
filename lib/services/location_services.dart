@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../packages.dart';
-import '../logger_utils.dart';
+import '../utils/logger_utils.dart';
 
 class LocationServices {
   Future<String?> getCurrentAddress() async {

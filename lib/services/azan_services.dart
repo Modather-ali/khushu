@@ -2,12 +2,12 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:http/http.dart' as http;
-import 'package:khushu/logger_utils.dart';
 import 'package:khushu/packages.dart';
 
+import '../utils/logger_utils.dart';
 import 'location_services.dart';
 
-class Services {
+class AzanServices {
   final LocationServices _locationServices = LocationServices();
   Future<List<Map<String, String>>> getPrayerTimes() async {
     List<Map<String, String>> prayerTimes = [];
@@ -25,9 +25,7 @@ class Services {
       Placemark? placemark = await _locationServices
           .getPlacemark(LatLng(position.latitude, position.longitude));
       Uri uri = Uri.parse(
-          'http://api.aladhan.com/v1/timingsByCity?city=${placemark!.locality}&country=${placemark.country}&method=8'
-          //'http://api.aladhan.com/v1/calendar/2023/9?longitude=${position.longitude}&latitude=${position.latitude}'
-          );
+          'http://api.aladhan.com/v1/timingsByCity?city=${placemark!.locality}&country=${placemark.country}&method=8');
       http.Response response = await http.get(uri);
       Logger.print('${response.statusCode}');
       if (response.statusCode == 200) {

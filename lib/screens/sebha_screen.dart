@@ -14,7 +14,7 @@ class SebhaScreen extends StatefulWidget {
 class _SebhaScreenState extends State<SebhaScreen> {
   int _counter = 0;
   bool _hasVibrator = false;
-  bool _editCounter = false;
+  final bool _editCounter = false;
   final TextEditingController _textEditingController = TextEditingController();
   // final SharedPreferencesData _sharedPreferencesData = SharedPreferencesData();
 
@@ -36,40 +36,18 @@ class _SebhaScreenState extends State<SebhaScreen> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: const Color(0xFFE7ECEF),
-          title: const Text('سبحة'),
+          title: const Text('(سبح بإسم ربك الاعلى)'),
         ),
         backgroundColor: const Color(0xFFE7ECEF),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextButton(
-                onPressed: () {
-                  if (_editCounter) {
-                    _counter += int.parse(_textEditingController.text);
-                    // _sharedPreferencesData.increaseSebhaCounter(_counter);
-                    _textEditingController.clear();
-                  }
-                  setState(() => _editCounter = !_editCounter);
-                },
-                child: const Text(
-                  'إستغفر الله',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ),
-              Visibility(
-                visible: _editCounter,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 50),
-                  child: TextField(
-                    controller: _textEditingController,
-                    decoration: const InputDecoration(
-                      prefixIcon: Icon(Icons.add),
-                    ),
-                  ),
+              const Text(
+                'إستغفر الله',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
               const SizedBox(height: 50),

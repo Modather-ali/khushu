@@ -24,7 +24,7 @@ class ZekrCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
               child: SelectableText(
-                zekr.zekr,
+                zekr.zekr.trim(),
                 textAlign: TextAlign.center,
               ),
             ),
