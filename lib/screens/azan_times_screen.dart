@@ -13,7 +13,28 @@ class AzanTimesScreen extends StatefulWidget {
 
 class _AzanTimesScreenState extends State<AzanTimesScreen> {
   final AzanServices _services = AzanServices();
-  List<Map<String, String>> _prayerTimes = [];
+  List<Map<String, String>> _prayerTimes = [
+    {
+      'pray': 'الفجر',
+      'time': '',
+    },
+    {
+      'pray': 'الظهر',
+      'time': '',
+    },
+    {
+      'pray': 'العصر',
+      'time': '',
+    },
+    {
+      'pray': 'المغرب',
+      'time': '',
+    },
+    {
+      'pray': 'العشاء',
+      'time': '',
+    },
+  ];
   var _connectivityResult = ConnectivityResult.none;
   final Connectivity _connectivity = Connectivity();
 
@@ -67,7 +88,7 @@ class _AzanTimesScreenState extends State<AzanTimesScreen> {
       body: FutureBuilder(
         future: _services.getPrayerTimes(),
         builder: (context, AsyncSnapshot snapshot) {
-          if (snapshot.hasData) {
+          if (snapshot.hasData && snapshot.data.isNotEmpty) {
             _prayerTimes = snapshot.data;
           }
           return Column(
@@ -97,6 +118,11 @@ class _AzanTimesScreenState extends State<AzanTimesScreen> {
                   ),
                 ),
               ),
+              const SizedBox(
+                width: double.infinity,
+                height: 20,
+              ),
+              if (!snapshot.hasData) const CircularProgressIndicator(),
               const SizedBox(
                 width: double.infinity,
                 height: 80,

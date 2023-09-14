@@ -13,7 +13,7 @@ class BottomNavigation extends StatefulWidget {
 }
 
 class _BottomNavigationState extends State<BottomNavigation> {
-  int _screenIndex = 1;
+  int _screenIndex = 0;
 
   final List<Widget> _screens = [
     const AzkarScreen(),
