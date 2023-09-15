@@ -35,11 +35,11 @@ class RowIconButtons extends StatelessWidget {
           color: Constants.primaryColor,
           icon: const Icon(Icons.share_outlined),
         ),
-        IconButton(
-          onPressed: () {},
-          color: Constants.primaryColor,
-          icon: const Icon(Icons.favorite),
-        ),
+        // IconButton(
+        //   onPressed: () {},
+        //   color: Constants.primaryColor,
+        //   icon: const Icon(Icons.favorite),
+        // ),
       ],
     );
   }

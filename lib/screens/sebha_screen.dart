@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:odometer/odometer.dart';
 import 'package:vibration/vibration.dart';
 
+import '../services/shared_preferences_data.dart';
+
 // import '../../services/shared_preferences_data.dart';
 
 class SebhaScreen extends StatefulWidget {
@@ -14,14 +16,13 @@ class SebhaScreen extends StatefulWidget {
 class _SebhaScreenState extends State<SebhaScreen> {
   int _counter = 0;
   bool _hasVibrator = false;
-  final bool _editCounter = false;
-  final TextEditingController _textEditingController = TextEditingController();
-  // final SharedPreferencesData _sharedPreferencesData = SharedPreferencesData();
+
+  final _sharedPreferencesData = SharedPreferencesData();
 
   _init() async {
     _hasVibrator = (await Vibration.hasVibrator())!;
-    // await _sharedPreferencesData.init();
-    // _counter = _sharedPreferencesData.sebhaCounter;
+    await _sharedPreferencesData.init();
+    _counter = _sharedPreferencesData.sebhaCounter;
     setState(() {});
   }
 
@@ -59,7 +60,7 @@ class _SebhaScreenState extends State<SebhaScreen> {
                   setState(() {
                     _counter++;
                   });
-                  // _sharedPreferencesData.increaseSebhaCounter(_counter);
+                  _sharedPreferencesData.increaseSebhaCounter(_counter);
                 },
                 child: Container(
                   height: 150,
@@ -81,12 +82,17 @@ class _SebhaScreenState extends State<SebhaScreen> {
                           color: Color(0xFFA7A9AF),
                         )
                       ]),
-                  child: AnimatedSlideOdometerNumber(
-                    numberTextStyle: const TextStyle(
-                        fontSize: 22, fontWeight: FontWeight.w600),
-                    duration: const Duration(seconds: 1),
-                    odometerNumber: OdometerNumber(_counter),
-                    letterWidth: 13,
+                  child: Directionality(
+                    textDirection: TextDirection.ltr,
+                    child: AnimatedSlideOdometerNumber(
+                      numberTextStyle: const TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      duration: const Duration(seconds: 1),
+                      odometerNumber: OdometerNumber(_counter),
+                      letterWidth: 13,
+                    ),
                   ),
                 ),
               ),

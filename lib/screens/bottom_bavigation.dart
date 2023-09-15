@@ -21,7 +21,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
     const AzanTimesScreen(),
     QiblaScreen(),
     const SebhaScreen(),
-    Container(color: Colors.pink),
+    // Container(color: Colors.pink),
   ];
   @override
   Widget build(BuildContext context) {
@@ -29,10 +29,10 @@ class _BottomNavigationState extends State<BottomNavigation> {
       body: _screens[_screenIndex],
       appBar: AppBar(
         title: const Text('خشوع'),
-        leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.settings),
-        ),
+        // leading: IconButton(
+        //   onPressed: () {},
+        //   icon: const Icon(Icons.settings),
+        // ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Colors.black,
@@ -54,8 +54,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
           ),
           _bnbItem(icon: FlutterIslamicIcons.solidQibla, label: 'القبله'),
           _bnbItem(icon: FlutterIslamicIcons.solidTasbih2, label: 'سبحة'),
-          _bnbItem(
-              icon: FlutterIslamicIcons.solidQuran, label: 'القرءان الكريم'),
+          // _bnbItem(
+          //     icon: FlutterIslamicIcons.solidQuran, label: 'القرءان الكريم'),
         ],
       ),
     );
