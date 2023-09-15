@@ -5,6 +5,7 @@ import 'package:flutter_qiblah/flutter_qiblah.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+import '../../widgets/loading_indicator.dart';
 import 'widgets.dart';
 
 class QiblahMaps extends StatefulWidget {

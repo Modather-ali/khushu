@@ -3,6 +3,7 @@ import 'package:flutter_islamic_icons/flutter_islamic_icons.dart';
 
 import 'azan_times_screen.dart';
 import 'azkar/azkar_screen.dart';
+import 'qibla/qibla_screen.dart';
 import 'sebha_screen.dart';
 
 class BottomNavigation extends StatefulWidget {
@@ -18,7 +19,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
   final List<Widget> _screens = [
     const AzkarScreen(),
     const AzanTimesScreen(),
-    Container(color: Colors.green),
+    QiblaScreen(),
     const SebhaScreen(),
     Container(color: Colors.pink),
   ];

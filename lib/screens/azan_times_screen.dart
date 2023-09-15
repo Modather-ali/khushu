@@ -82,9 +82,6 @@ class _AzanTimesScreenState extends State<AzanTimesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('مواعيد الصلاة'),
-      ),
       body: FutureBuilder(
         future: _services.getPrayerTimes(),
         builder: (context, AsyncSnapshot snapshot) {

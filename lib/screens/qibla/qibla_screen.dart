@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_qiblah/flutter_qiblah.dart';
 
-import '../../widgets/widgets.dart';
+import 'widgets/widgets.dart';
 
 class QiblaScreen extends StatelessWidget {
   QiblaScreen({super.key});
@@ -12,9 +12,6 @@ class QiblaScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('إتجاه القبله'),
-      ),
       body: FutureBuilder(
         future: _deviceSupport,
         builder: (_, AsyncSnapshot<bool?> snapshot) {

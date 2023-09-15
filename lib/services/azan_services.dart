@@ -15,7 +15,7 @@ class AzanServices {
     List<Map<String, String>> prayerTimes = [];
     final Map prayers = {
       'Fajr': 'الفجر',
-      'Sunrise': 'الشروق',
+      // 'Sunrise': 'الشروق',
       'Dhuhr': 'الظهر',
       'Asr': 'العصر',
       'Maghrib': 'المغرب',
