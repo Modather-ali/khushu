@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:share_plus/share_plus.dart';
 
-import '../../../modules/zekr.dart';
-import '../../../res/constants.dart';
+import '../../../../modules/zekr.dart';
+import '../../../../res/constants.dart';
 
 class RowIconButtons extends StatelessWidget {
   const RowIconButtons({

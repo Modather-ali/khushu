@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../modules/zekr.dart';
+import '../../../../modules/zekr.dart';
 import 'row_icon_buttons.dart';
 
 class ZekrCard extends StatelessWidget {

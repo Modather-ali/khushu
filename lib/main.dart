@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
+import '.archive/screens/bottom_bavigation.dart';
+import '.archive/services/shared_preferences_data.dart';
 import 'res/app_theme.dart';
-import 'screens/bottom_bavigation.dart';
-import 'services/shared_preferences_data.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
