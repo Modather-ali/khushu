@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
-import '.archive/screens/bottom_bavigation.dart';
-import '.archive/services/shared_preferences_data.dart';
 import 'res/app_theme.dart';
+import 'screens/azkar/azkar_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,13 +17,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final _sharedPreferencesData = SharedPreferencesData();
-  @override
-  void initState() {
-    _sharedPreferencesData.init();
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -32,7 +24,7 @@ class _MyAppState extends State<MyApp> {
       title: 'خشوع',
       locale: const Locale('ar'),
       theme: lightTheme,
-      home: const BottomNavigation(),
+      home: const AzkarScreen(),
     );
   }
 }

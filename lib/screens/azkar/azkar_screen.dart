@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 import '../../../../modules/zekr.dart';
 import '../../../../res/data.dart';
-import 'widgets/zekr_card.dart';
 
 class AzkarScreen extends StatefulWidget {
   const AzkarScreen({super.key});
@@ -39,15 +38,12 @@ class _AzkarScreenState extends State<AzkarScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView.builder(
-        itemCount: _azkar.length,
-        itemBuilder: (context, index) {
-          return ZekrCard(
-            zekr: _azkar[index],
-          );
-        },
-        padding: const EdgeInsets.all(15),
-      ),
+      appBar: AppBar(title: const Text('خشوع'), actions: [
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.menu),
+        ),
+      ]),
     );
   }
 }
