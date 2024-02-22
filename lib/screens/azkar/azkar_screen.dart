@@ -44,6 +44,15 @@ class _AzkarScreenState extends State<AzkarScreen> {
           icon: const Icon(Icons.menu),
         ),
       ]),
+      body: const Center(
+        child: Card(
+          color: Colors.red,
+          child: SizedBox(
+            height: 100,
+            width: 100,
+          ),
+        ),
+      ),
     );
   }
 }
