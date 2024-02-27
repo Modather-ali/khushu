@@ -27,6 +27,7 @@ dependencies:
   share_plus: ^6.3.0
   shared_preferences: ^2.0.20
   get: ^4.6.5
+  flutter_stepindicator: ^0.1.7
   # geocoding: ^2.1.0
   # latlong2: ^0.9.0
   # flutter_screenutil: ^5.0.0+2

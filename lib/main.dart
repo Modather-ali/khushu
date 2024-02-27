@@ -20,7 +20,6 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
       title: 'خشوع',
       locale: const Locale('ar'),
       theme: lightTheme,

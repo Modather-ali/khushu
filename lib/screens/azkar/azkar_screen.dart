@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../modules/zekr.dart';
 import '../../../../res/data.dart';
+import 'widgets/zeker_category_widget.dart';
 
 class AzkarScreen extends StatefulWidget {
   const AzkarScreen({super.key});
@@ -44,14 +45,62 @@ class _AzkarScreenState extends State<AzkarScreen> {
           icon: const Icon(Icons.menu),
         ),
       ]),
-      body: const Center(
-        child: Card(
-          color: Colors.red,
-          child: SizedBox(
-            height: 100,
-            width: 100,
+      body: const Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ZekerCategoryWidget(
+                category: 'اذكار الصباح',
+                image: 'assets/icons/sun.png',
+              ),
+              ZekerCategoryWidget(
+                category: 'اذكار المساء',
+                image: 'assets/icons/half-moon.png',
+              ),
+            ],
           ),
-        ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ZekerCategoryWidget(
+                category: 'اذكار النوم',
+                image: 'assets/icons/sleep.png',
+              ),
+              ZekerCategoryWidget(
+                category: 'اذكار الاستيغاظ',
+                image: 'assets/icons/awaken.png',
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ZekerCategoryWidget(
+                category: 'اذكار قبل الصلاة',
+                image: 'assets/icons/praying.png',
+              ),
+              ZekerCategoryWidget(
+                category: 'اذكار بعد الصلاة',
+                image: 'assets/icons/praying.png',
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ZekerCategoryWidget(
+                category: 'اذكار الخروج من المنزل',
+                image: 'assets/icons/door.png',
+              ),
+              ZekerCategoryWidget(
+                category: 'اذكار دخول المنزل',
+                image: 'assets/icons/door.png',
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
