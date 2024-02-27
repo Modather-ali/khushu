@@ -16,7 +16,9 @@ class ZekerCategoryWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.to(() => const ZekerScreen());
+        Get.to(() => ZekerScreen(
+              category: category,
+            ));
       },
       child: Card(
         child: SizedBox(
