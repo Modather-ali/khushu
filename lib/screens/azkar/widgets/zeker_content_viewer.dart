@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:khushu/modules/zekr.dart';
+
+import '../../../modules/zekr.dart';
 
 class ZekerContentViewer extends StatelessWidget {
   final Array zekerContent;

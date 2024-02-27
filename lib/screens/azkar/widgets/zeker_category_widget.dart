@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:khushu/modules/zekr.dart';
 
+import '../../../modules/zekr.dart';
 import '../zeker_screen.dart';
 
 class ZekerCategoryWidget extends StatelessWidget {

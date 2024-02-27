@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:http/http.dart' as http;
-import 'package:khushu/packages.dart';
+import '../../packages.dart';
 
 import '../../utils/logger_utils.dart';
 import 'location_services.dart';
