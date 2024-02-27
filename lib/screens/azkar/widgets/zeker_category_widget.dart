@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:khushu/modules/zekr.dart';
 
 import '../zeker_screen.dart';
 
 class ZekerCategoryWidget extends StatelessWidget {
   final String category;
   final String image;
+  final Zekr zekr;
   const ZekerCategoryWidget({
     super.key,
     required this.category,
     required this.image,
+    required this.zekr,
   });
 
   @override
@@ -18,6 +21,7 @@ class ZekerCategoryWidget extends StatelessWidget {
       onTap: () {
         Get.to(() => ZekerScreen(
               category: category,
+              zekr: zekr,
             ));
       },
       child: Card(

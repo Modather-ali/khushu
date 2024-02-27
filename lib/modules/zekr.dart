@@ -9,36 +9,95 @@ Zekr zekrFromJson(String str) => Zekr.fromJson(json.decode(str));
 String zekrToJson(Zekr data) => json.encode(data.toJson());
 
 class Zekr {
-  final String zekr;
-  final String category;
-  final String reference;
+  int id;
+  String category;
+  String audio;
+  String filename;
+  List<Array> array;
 
   Zekr({
-    required this.zekr,
+    required this.id,
     required this.category,
-    required this.reference,
+    required this.audio,
+    required this.filename,
+    required this.array,
   });
 
   Zekr copyWith({
-    String? zekr,
+    int? id,
     String? category,
-    String? reference,
+    String? audio,
+    String? filename,
+    List<Array>? array,
   }) =>
       Zekr(
-        zekr: zekr ?? this.zekr,
+        id: id ?? this.id,
         category: category ?? this.category,
-        reference: reference ?? this.reference,
+        audio: audio ?? this.audio,
+        filename: filename ?? this.filename,
+        array: array ?? this.array,
       );
 
   factory Zekr.fromJson(Map<String, dynamic> json) => Zekr(
-        zekr: json["zekr"],
+        id: json["id"],
         category: json["category"],
-        reference: json["reference"],
+        audio: json["audio"],
+        filename: json["filename"],
+        array: List<Array>.from(json["array"].map((x) => Array.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
-        "zekr": zekr,
+        "id": id,
         "category": category,
-        "reference": reference,
+        "audio": audio,
+        "filename": filename,
+        "array": List<dynamic>.from(array.map((x) => x.toJson())),
+      };
+}
+
+class Array {
+  int id;
+  String text;
+  int count;
+  String audio;
+  String filename;
+
+  Array({
+    required this.id,
+    required this.text,
+    required this.count,
+    required this.audio,
+    required this.filename,
+  });
+
+  Array copyWith({
+    int? id,
+    String? text,
+    int? count,
+    String? audio,
+    String? filename,
+  }) =>
+      Array(
+        id: id ?? this.id,
+        text: text ?? this.text,
+        count: count ?? this.count,
+        audio: audio ?? this.audio,
+        filename: filename ?? this.filename,
+      );
+
+  factory Array.fromJson(Map<String, dynamic> json) => Array(
+        id: json["id"],
+        text: json["text"],
+        count: json["count"],
+        audio: json["audio"],
+        filename: json["filename"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "text": text,
+        "count": count,
+        "audio": audio,
+        "filename": filename,
       };
 }

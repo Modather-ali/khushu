@@ -17,13 +17,8 @@ class _AzkarScreenState extends State<AzkarScreen> {
   final List<Zekr> _azkar = [];
   _loadAzkar() async {
     Zekr newZekr;
-    AZKAR.shuffle();
-    for (List zekrData in AZKAR) {
-      newZekr = Zekr(
-        zekr: zekrData[1],
-        category: zekrData[0],
-        reference: zekrData[4],
-      );
+    for (var zekrData in AZKAR) {
+      newZekr = Zekr.fromJson(zekrData);
       _azkar.add(newZekr);
     }
     log(_azkar.length.toString());
@@ -39,23 +34,25 @@ class _AzkarScreenState extends State<AzkarScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('خشوع'), actions: [
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.menu),
-        ),
+      appBar: AppBar(title: const Text('خشوع'), actions: const [
+        // IconButton(
+        //   onPressed: () {},
+        //   icon: const Icon(Icons.menu),
+        // ),
       ]),
-      body: const Column(
+      body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               ZekerCategoryWidget(
+                zekr: _azkar[0],
                 category: 'اذكار الصباح',
                 image: 'assets/icons/sun.png',
               ),
               ZekerCategoryWidget(
+                zekr: _azkar[0],
                 category: 'اذكار المساء',
                 image: 'assets/icons/half-moon.png',
               ),
@@ -65,36 +62,43 @@ class _AzkarScreenState extends State<AzkarScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               ZekerCategoryWidget(
+                zekr: _azkar[1],
                 category: 'اذكار النوم',
                 image: 'assets/icons/sleep.png',
               ),
               ZekerCategoryWidget(
+                zekr: _azkar[2],
                 category: 'اذكار الاستيغاظ',
                 image: 'assets/icons/awaken.png',
               ),
             ],
           ),
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          //   children: [
+          //     ZekerCategoryWidget(
+          //       zekr: _azkar[0],
+          //       category: 'اذكار قبل الصلاة',
+          //       image: 'assets/icons/praying.png',
+          //     ),
+          //     ZekerCategoryWidget(
+          //       zekr: _azkar[0],
+          //       category: 'اذكار بعد الصلاة',
+          //       image: 'assets/icons/praying.png',
+          //     ),
+          //   ],
+          // ),
+
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               ZekerCategoryWidget(
-                category: 'اذكار قبل الصلاة',
-                image: 'assets/icons/praying.png',
-              ),
-              ZekerCategoryWidget(
-                category: 'اذكار بعد الصلاة',
-                image: 'assets/icons/praying.png',
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              ZekerCategoryWidget(
+                zekr: _azkar[3],
                 category: 'اذكار الخروج من المنزل',
                 image: 'assets/icons/door.png',
               ),
               ZekerCategoryWidget(
+                zekr: _azkar[4],
                 category: 'اذكار دخول المنزل',
                 image: 'assets/icons/door.png',
               ),
